@@ -1,0 +1,20 @@
+#app div.product {
+  padding: 12%;
+}
+
+#app div.product div {
+  padding: 20px;
+}
+
+.product-image {
+  float: left;
+}
+
+.product-image img {
+  width: 200px;
+}
+
+.product-info {
+  float: left;
+}
+/*# sourceMappingURL=style.css.map */

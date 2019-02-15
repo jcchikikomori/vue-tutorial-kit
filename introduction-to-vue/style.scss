@@ -1,0 +1,23 @@
+#app {
+  div.product {
+    padding: 12%;
+
+    div {
+      padding: 20px;
+
+      @at-root {
+        .product-image {
+          float: left;
+
+          img {
+            width: 200px;
+          }
+        }
+
+        .product-info {
+          float: left;
+        }
+      }
+    }
+  }
+}
