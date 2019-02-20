@@ -3,8 +3,8 @@ body {
 }
 
 #app div.product {
-  padding: 2% 15%;
-  display: inline-block;
+  padding: 12%;
+  margin-top: -10%;
 }
 
 #app div.product div {
@@ -28,7 +28,6 @@ body {
   padding: 12px;
   background: aqua;
   border: 1px gray solid;
-  cursor: pointer;
 }
 
 .product-info .color-box {
@@ -40,7 +39,6 @@ body {
 
 .product-info .disabledButton {
   border: 1px red solid;
-  cursor: auto;
 }
 
 .product-info .cart {
@@ -49,3 +47,4 @@ body {
   margin-top: 5px;
   border: 1px gray solid;
 }
+/*# sourceMappingURL=style.css.map */

@@ -7,9 +7,8 @@ body {
 
 #app {
   div.product {
-    padding: 2% 15%;
-    // margin-top: -10%;
-    display: inline-block;
+    padding: 12%;
+    margin-top: -10%;
 
     div {
       padding: 20px;
@@ -30,7 +29,6 @@ body {
             padding: 12px;
             background: aqua;
             border: 1px gray solid;
-            cursor: pointer;
           }
 
           .color-box {
@@ -46,7 +44,6 @@ body {
 
           .disabledButton {
             border: 1px red solid;
-            cursor: auto;
           }
 
           .cart {

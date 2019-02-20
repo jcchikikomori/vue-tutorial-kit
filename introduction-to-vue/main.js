@@ -1,43 +1,85 @@
-var app = new Vue({
-  // OPTIONS
-  el: "#app", // element to connect with this instance
-  data: {
-    // set data
-    brand: "Ika Musume",
-    product: "Squiddy Doll",
-    selectedVariant: 0,
-    link: "https://jccultima123.github.io",
-    // inStock: true,
-    cart: 0,
-    details: ["80% cotton", "20% polyester", "Gender-neutral"],
-    variants: [
-      {
-        variantId: 2234,
-        variantColor: "green",
-        variantImage: "../assets/images/ika-musume-chibi.png",
-        variantQuantity: 10,
-        variantOnSale: false
-      },
-      {
-        variantId: 2235,
-        variantColor: "blue",
-        variantImage: "../assets/images/ika-musume-chibi-2.jpg",
-        variantQuantity: 0,
-        variantOnSale: true
-      }
-    ],
-    sizes: [
-      {
-        sizeId: 123,
-        sizeName: "Small"
-      },
-      {
-        sizeId: 124,
-        sizeName: "Medium"
-      }
-    ],
-    inventory: 100,
-    // onSale: true
+Vue.component('product', {
+  template: `
+    <div class="product">
+
+      <div class="product-image">
+        <img :src="image" />
+      </div>
+
+      <div class="product-info">
+
+        <h1>{{ title }}</h1>
+        <p v-if="onSale">ON SALE DESU!!!</p>
+        <p v-if="inStock">In Stock</p>
+        <p v-else :class="{ outOfStock: !inStock }">Out of Stock :(</p>
+        <p>Shipping: {{ shipping }}</p>
+
+        <!-- ANOTHER COMPONENT! -->
+        <product-details :details="details"></product-details>
+
+        <div class="color-box" 
+             v-for="(variant, index) in variants"
+             :key="variant.variantId"
+             :style="{ backgroundColor: variant.variantColor }"
+             @mouseover="updateProduct(index)">
+        </div>
+
+        <button class="addToCart"
+                v-on:click="addToCart"
+                :disabled="!inStock"
+                :class="{ disabledButton: !inStock }">
+                Add to Cart</button>
+        <button v-if="cart > 0" v-on:click="removeToCart">Remove from Cart</button>
+        <div class="cart">
+          <p>Cart&nbsp;({{cart}})</p>
+        </div>
+        <p>User is premium: {{ premium }}</p>
+
+      </div>
+
+    </div>
+  `,
+  props: {
+    premium: {
+      type: Boolean,
+      required: true
+    }
+  },
+  data() {
+    return {
+      brand: "Ika Musume",
+      product: "Squiddy Doll",
+      selectedVariant: 0,
+      cart: 0,
+      details: ["80% cotton", "20% polyester", "Gender-neutral"],
+      variants: [
+        {
+          variantId: 2234,
+          variantColor: "green",
+          variantImage: "../assets/images/ika-musume-chibi.png",
+          variantQuantity: 10,
+          variantOnSale: false
+        },
+        {
+          variantId: 2235,
+          variantColor: "blue",
+          variantImage: "../assets/images/ika-musume-chibi-2.jpg",
+          variantQuantity: 0,
+          variantOnSale: true
+        }
+      ],
+      sizes: [
+        {
+          sizeId: 123,
+          sizeName: "Small"
+        },
+        {
+          sizeId: 124,
+          sizeName: "Medium"
+        }
+      ],
+      inventory: 100
+    }
   },
   methods: {
     addToCart: function() {
@@ -48,7 +90,7 @@ var app = new Vue({
     },
     updateProduct: function(index) {
       this.selectedVariant = index;
-      console.log(index);
+      // console.log(index);
     }
   },
   // get computed functions 
@@ -65,6 +107,34 @@ var app = new Vue({
     },
     onSale() {
       return this.variants[this.selectedVariant].variantOnSale;
+    },
+    shipping() {
+      if (this.premium) {
+        return "Free";
+      } else {
+        return 2.99;
+      }
     }
+  }
+});
+
+Vue.component('product-details', {
+  template: `
+    <ul>
+      <li v-for="detail in details">{{ detail }}</li>
+    </ul>
+  `,
+  props: {
+    details: {
+      type: Array,
+      required: true
+    }
+  }
+})
+
+var app = new Vue({
+  el: "#app",
+  data: {
+    premium: true
   }
 });
