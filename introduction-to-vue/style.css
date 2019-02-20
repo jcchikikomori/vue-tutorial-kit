@@ -1,5 +1,10 @@
+body {
+  font-family: "Comic Sans MS", "Arial", sans-serif;
+}
+
 #app div.product {
   padding: 12%;
+  margin-top: -10%;
 }
 
 #app div.product div {
@@ -16,5 +21,30 @@
 
 .product-info {
   float: left;
+}
+
+.product-info button {
+  margin-top: 10px;
+  padding: 12px;
+  background: aqua;
+  border: 1px gray solid;
+}
+
+.product-info .color-box {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  display: table-cell;
+}
+
+.product-info .disabledButton {
+  border: 1px red solid;
+}
+
+.product-info .cart {
+  padding: 2px;
+  width: 51px;
+  margin-top: 5px;
+  border: 1px gray solid;
 }
 /*# sourceMappingURL=style.css.map */

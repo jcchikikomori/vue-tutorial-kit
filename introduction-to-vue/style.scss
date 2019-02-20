@@ -1,6 +1,14 @@
+$image-width: 200px;
+$cart-width: 51px;
+
+body {
+  font-family: "Comic Sans MS", "Arial", sans-serif;
+}
+
 #app {
   div.product {
     padding: 12%;
+    margin-top: -10%;
 
     div {
       padding: 20px;
@@ -10,12 +18,40 @@
           float: left;
 
           img {
-            width: 200px;
+            width: $image-width;
           }
         }
 
         .product-info {
           float: left;
+          button {
+            margin-top: 10px;
+            padding: 12px;
+            background: aqua;
+            border: 1px gray solid;
+          }
+
+          .color-box {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            display: table-cell;
+          }
+
+          // .outOfStock {
+          //   text-decoration: line-through;
+          // }
+
+          .disabledButton {
+            border: 1px red solid;
+          }
+
+          .cart {
+            padding: 2px;
+            width: $cart-width;
+            margin-top: 5px;
+            border: 1px gray solid;
+          }
         }
       }
     }
