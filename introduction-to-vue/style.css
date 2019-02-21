@@ -2,6 +2,19 @@ body {
   font-family: "Comic Sans MS", "Arial", sans-serif;
 }
 
+#app div.cart {
+  padding: 2px;
+  width: 150px;
+  margin-top: 5px;
+  border: 1px gray solid;
+  text-align: center;
+  position: fixed;
+}
+
+#app div.cart button {
+  margin: 20px 0px;
+}
+
 #app div.product {
   padding: 2% 15%;
   display: inline-block;
@@ -42,10 +55,4 @@ body {
   border: 1px red solid;
   cursor: auto;
 }
-
-.product-info .cart {
-  padding: 2px;
-  width: 51px;
-  margin-top: 5px;
-  border: 1px gray solid;
-}
+/*# sourceMappingURL=style.css.map */

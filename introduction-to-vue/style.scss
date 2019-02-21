@@ -1,11 +1,24 @@
 $image-width: 200px;
-$cart-width: 51px;
+$cart-width: 150px;
 
 body {
   font-family: "Comic Sans MS", "Arial", sans-serif;
 }
 
 #app {
+
+  div.cart {
+    padding: 2px;
+    width: $cart-width;
+    margin-top: 5px;
+    border: 1px gray solid;
+    text-align: center;
+    position: fixed;
+    button {
+      margin: 20px 0px;
+    }
+  }
+
   div.product {
     padding: 2% 15%;
     // margin-top: -10%;
@@ -47,13 +60,6 @@ body {
           .disabledButton {
             border: 1px red solid;
             cursor: auto;
-          }
-
-          .cart {
-            padding: 2px;
-            width: $cart-width;
-            margin-top: 5px;
-            border: 1px gray solid;
           }
         }
       }

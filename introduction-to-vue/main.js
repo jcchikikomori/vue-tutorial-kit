@@ -29,10 +29,9 @@ Vue.component('product', {
                 :disabled="!inStock"
                 :class="{ disabledButton: !inStock }">
                 Add to Cart</button>
-        <button v-if="cart > 0" v-on:click="removeToCart">Remove from Cart</button>
-        <div class="cart">
-          <p>Cart&nbsp;({{cart}})</p>
-        </div>
+        <button @click="removeFromCart"
+                :hidden="this.checkItem">
+                Remove from Cart</button>
         <p>User is premium: {{ premium }}</p>
 
       </div>
@@ -43,54 +42,56 @@ Vue.component('product', {
     premium: {
       type: Boolean,
       required: true
+    },
+    // test
+    hasCart: {
+      type: Boolean,
+      required: false
     }
   },
   data() {
     return {
-      brand: "Ika Musume",
-      product: "Squiddy Doll",
+      brand: 'Ika Musume',
+      product: 'Squiddy Doll',
       selectedVariant: 0,
-      cart: 0,
-      details: ["80% cotton", "20% polyester", "Gender-neutral"],
-      variants: [
-        {
-          variantId: 2234,
-          variantColor: "green",
-          variantImage: "../assets/images/ika-musume-chibi.png",
-          variantQuantity: 10,
-          variantOnSale: false
-        },
-        {
-          variantId: 2235,
-          variantColor: "blue",
-          variantImage: "../assets/images/ika-musume-chibi-2.jpg",
-          variantQuantity: 0,
-          variantOnSale: true
-        }
+      details: ['80% cotton', '20% polyester', 'Gender-neutral'],
+      variants: [{
+        variantId: 2234,
+        variantColor: 'green',
+        variantImage: '../assets/images/ika-musume-chibi.png',
+        variantQuantity: 10,
+        variantOnSale: false
+      },
+      {
+        variantId: 2235,
+        variantColor: 'blue',
+        variantImage: '../assets/images/ika-musume-chibi-2.jpg',
+        variantQuantity: 20,
+        variantOnSale: true
+      }
       ],
-      sizes: [
-        {
-          sizeId: 123,
-          sizeName: "Small"
-        },
-        {
-          sizeId: 124,
-          sizeName: "Medium"
-        }
+      sizes: [{
+        sizeId: 123,
+        sizeName: 'Small'
+      },
+      {
+        sizeId: 124,
+        sizeName: 'Medium'
+      }
       ],
       inventory: 100
-    }
+    };
   },
   methods: {
-    addToCart: function() {
-      this.cart += 1;
+    addToCart: function () {
+      // emit sends to @emit-name attr
+      this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId);
     },
-    removeToCart: function() {
-      this.cart -= 1;
+    removeFromCart: function () {
+      this.$emit('remove-from-cart', this.variants[this.selectedVariant].variantId);
     },
-    updateProduct: function(index) {
+    updateProduct: function (index) {
       this.selectedVariant = index;
-      // console.log(index);
     }
   },
   // get computed functions 
@@ -110,7 +111,7 @@ Vue.component('product', {
     },
     shipping() {
       if (this.premium) {
-        return "Free";
+        return 'Free';
       } else {
         return 2.99;
       }
@@ -130,11 +131,30 @@ Vue.component('product-details', {
       required: true
     }
   }
-})
+});
 
 var app = new Vue({
-  el: "#app",
+  el: '#app',
   data: {
-    premium: true
+    premium: true,
+    cart: []
+  },
+  methods: {
+    updateCart(id) {
+      this.cart.push(id);
+      // if (this.cart.length > 0) {
+      //   this.hasCart = true;
+      // }
+    },
+    removeItem(id) {
+      for(var i = this.cart.length - 1; i >= 0; i--) {
+        if (this.cart[i] === id) {
+          this.cart.splice(i, 1);
+        }
+      }
+      // if (this.cart.length <= 0) {
+      //   this.hasCart = false;
+      // }
+    }
   }
 });
