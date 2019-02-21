@@ -1,5 +1,6 @@
 $image-width: 200px;
 $cart-width: 150px;
+$fixed-padding: 20px;
 
 @font-face {
   font-family: 'Comic Sans MS';
@@ -20,6 +21,7 @@ body {
     border: 1px gray solid;
     text-align: center;
     position: fixed;
+    background: #fff;
     button {
       margin: 20px 0px;
     }
@@ -31,7 +33,7 @@ body {
     display: inline-block;
 
     div {
-      padding: 20px;
+      padding: $fixed-padding;
 
       @at-root {
         .product-image {
@@ -73,6 +75,11 @@ body {
           .disabledButton {
             border: 1px red solid;
             cursor: auto;
+          }
+
+          form.review-form {
+            // border: 1px gray solid;
+            padding: $fixed-padding;
           }
         }
       }
