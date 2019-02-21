@@ -1,6 +1,12 @@
 $image-width: 200px;
 $cart-width: 150px;
 
+@font-face {
+  font-family: 'Comic Sans MS';
+  font-style: normal;
+  src: url('../assets/fonts/ComicSansMS3.ttf');
+}
+
 body {
   font-family: "Comic Sans MS", "Arial", sans-serif;
 }
@@ -38,6 +44,12 @@ body {
 
         .product-info {
           float: left;
+
+          // disable padding inside div of product-info
+          .cart-box {
+            padding: 0px !important;
+          }
+
           button {
             margin-top: 10px;
             padding: 12px;
@@ -51,6 +63,7 @@ body {
             height: 20px;
             margin-right: 15px;
             display: table-cell;
+            cursor: pointer;
           }
 
           // .outOfStock {

@@ -21,17 +21,20 @@ Vue.component('product', {
              v-for="(variant, index) in variants"
              :key="variant.variantId"
              :style="{ backgroundColor: variant.variantColor }"
-             @mouseover="updateProduct(index)">
+             @click="updateProduct(index)">
         </div>
 
-        <button class="addToCart"
-                v-on:click="addToCart"
-                :disabled="!inStock"
-                :class="{ disabledButton: !inStock }">
-                Add to Cart</button>
-        <button @click="removeFromCart"
-                :hidden="this.checkItem">
-                Remove from Cart</button>
+        <div class="cart-box" :hidden="!inStock">
+          <button class="addToCart"
+                  v-on:click="addToCart"
+                  :disabled="!inStock"
+                  :class="{ disabledButton: !inStock }">
+                  Add to Cart</button>
+          <button @click="removeFromCart"
+                  :disabled="!inStock"
+                  :class="{ disabledButton: !inStock }">
+                  Remove from Cart</button>
+        </div>
         <p>User is premium: {{ premium }}</p>
 
       </div>
@@ -59,14 +62,14 @@ Vue.component('product', {
         variantId: 2234,
         variantColor: 'green',
         variantImage: '../assets/images/ika-musume-chibi.png',
-        variantQuantity: 10,
+        variantQuantity: 30,
         variantOnSale: false
       },
       {
         variantId: 2235,
         variantColor: 'blue',
         variantImage: '../assets/images/ika-musume-chibi-2.jpg',
-        variantQuantity: 20,
+        variantQuantity: 0,
         variantOnSale: true
       }
       ],
