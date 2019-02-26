@@ -36,13 +36,14 @@ Vue.component('product', {
                   Remove from Cart</button>
         </div>
 
-        <div>
+        <div class="review-box">
         <h2>Reviews</h2>
         <p v-if="!reviews.length">There are no reviews yet.</p>
         <ul>
           <li v-for="review in reviews">
           <p>{{ review.name }}</p>
           <p>Rating: {{ review.rating }}</p>
+          <p>Recommendation? {{ review.recommendation }}</p>
           <p>{{ review.review }}</p>
           </li>
         </ul>
@@ -110,6 +111,9 @@ Vue.component('product', {
     },
     updateProduct(index) {
       this.selectedVariant = index;
+    },
+    addReview(productReview) {
+      this.reviews.push(productReview);
     }
   },
   // get computed functions 
@@ -154,25 +158,39 @@ Vue.component('product-details', {
 Vue.component('product-review', {
   template: `
     <form class="review-form" @submit.prevent="onSubmit">
+
+      <p v-if="errors.length">
+        <b>Please correct the following error(s)</b>
+        <ul>
+          <li v-for="error in errors">{{ error }}</li>
+        </ul>
+      </p>
+
       <p>
         <label for="name">Name:</label>
-        <input id="name" v-model="name" placeholder="name" required>
+        <input id="name" v-model="name" placeholder="Name">
       </p>
-      
+
       <p>
         <label for="review">Review:</label>      
-        <textarea id="review" v-model="review" required></textarea>
+        <textarea id="review" v-model="review"></textarea>
       </p>
       
       <p>
         <label for="rating">Rating:</label>
-        <select id="rating" v-model.number="rating" required>
+        <select id="rating" v-model.number="rating">
           <option>5</option>
           <option>4</option>
           <option>3</option>
           <option>2</option>
           <option>1</option>
         </select>
+      </p>
+
+      <p>
+        <label for="recommendation">Would you recommend this product?</label>      
+        <input type="radio" name="recommendation" v-model="recommendation" value="Yes" /> Yes
+        <input type="radio" name="recommendation" v-model="recommendation" value="No" /> No
       </p>
           
       <p>
@@ -186,6 +204,7 @@ Vue.component('product-review', {
       name: null,
       review: null,
       rating: null,
+      recommendation: 'No',
       errors: []
     };
   },
@@ -195,13 +214,15 @@ Vue.component('product-review', {
         let productReview = {
           name: this.name,
           review: this.review,
-          rating: this.rating
+          rating: this.rating,
+          recommendation: this.recommendation
         };
         this.$emit('review-submitted', productReview);
         // clear after emit submission
         this.name = null;
         this.review = null;
         this.rating = null;
+        this.recommendation = 'No'; // TODO: Get Default value
       } else {
         if(!this.name) this.errors.push('Name required.');
         if(!this.review) this.errors.push('Review required.');

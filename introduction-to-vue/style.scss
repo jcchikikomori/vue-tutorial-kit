@@ -77,9 +77,11 @@ body {
             cursor: auto;
           }
 
+          div.review-box,
           form.review-form {
-            // border: 1px gray solid;
+            border: 1px gray solid;
             padding: $fixed-padding;
+            margin: 6px 0px;
           }
         }
       }

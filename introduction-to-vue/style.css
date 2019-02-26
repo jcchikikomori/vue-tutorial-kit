@@ -1,12 +1,9 @@
 @font-face {
   font-family: 'Comic Sans MS';
   font-style: normal;
-  src: url("../assets/fonts/ComicSansMS3.ttf");
-}
-
+  src: url("../assets/fonts/ComicSansMS3.ttf"); }
 body {
-  font-family: "Comic Sans MS", "Arial", sans-serif;
-}
+  font-family: "Comic Sans MS", "Arial", sans-serif; }
 
 #app div.cart {
   padding: 2px;
@@ -15,59 +12,42 @@ body {
   border: 1px gray solid;
   text-align: center;
   position: fixed;
-  background: #fff;
-}
-
-#app div.cart button {
-  margin: 20px 0px;
-}
-
+  background: #fff; }
+  #app div.cart button {
+    margin: 20px 0px; }
 #app div.product {
   padding: 2% 15%;
-  display: inline-block;
-}
+  display: inline-block; }
+  #app div.product div {
+    padding: 20px; }
+    .product-image {
+      float: left; }
+      .product-image img {
+        width: 200px; }
 
-#app div.product div {
-  padding: 20px;
-}
+    .product-info {
+      float: left; }
+      .product-info .cart-box {
+        padding: 0px !important; }
+      .product-info button {
+        margin-top: 10px;
+        padding: 12px;
+        background: aqua;
+        border: 1px gray solid;
+        cursor: pointer; }
+      .product-info .color-box {
+        width: 20px;
+        height: 20px;
+        margin-right: 15px;
+        display: table-cell;
+        cursor: pointer; }
+      .product-info .disabledButton {
+        border: 1px red solid;
+        cursor: auto; }
+      .product-info div.review-box,
+      .product-info form.review-form {
+        border: 1px gray solid;
+        padding: 20px;
+        margin: 6px 0px; }
 
-.product-image {
-  float: left;
-}
-
-.product-image img {
-  width: 200px;
-}
-
-.product-info {
-  float: left;
-}
-
-.product-info .cart-box {
-  padding: 0px !important;
-}
-
-.product-info button {
-  margin-top: 10px;
-  padding: 12px;
-  background: aqua;
-  border: 1px gray solid;
-  cursor: pointer;
-}
-
-.product-info .color-box {
-  width: 20px;
-  height: 20px;
-  margin-right: 15px;
-  display: table-cell;
-  cursor: pointer;
-}
-
-.product-info .disabledButton {
-  border: 1px red solid;
-  cursor: auto;
-}
-
-.product-info form.review-form {
-  padding: 20px;
-}
+/*# sourceMappingURL=style.css.map */
