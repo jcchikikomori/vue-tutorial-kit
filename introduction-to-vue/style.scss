@@ -76,12 +76,35 @@ body {
             border: 1px red solid;
             cursor: auto;
           }
+        
+        }
 
-          div.review-box,
-          form.review-form {
-            border: 1px gray solid;
-            padding: $fixed-padding;
-            margin: 6px 0px;
+        div.review-box,
+        form.review-form {
+          // border: 1px gray solid;
+          padding: $fixed-padding;
+          // margin: 6px 0px;
+        }
+
+        div#tabs {
+          border: 1px gray solid;
+          padding: 0px !important;
+          margin-top: 30px;
+          width: fit-content;
+          .tab {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13.5px;
+            padding: 16px;
+            border: inherit;
+            display: inline-block;
+            border-top: none;
+            border-left: none;
+            cursor: pointer;
+          }
+          .activeTab {
+            color: #16C0B0;
+            background-color: black;
+            text-decoration: underline;
           }
         }
       }
