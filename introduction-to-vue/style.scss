@@ -1,17 +1,39 @@
 $image-width: 200px;
-$cart-width: 51px;
+$cart-width: 150px;
+$fixed-padding: 20px;
+
+@font-face {
+  font-family: 'Comic Sans MS';
+  font-style: normal;
+  src: url('../assets/fonts/ComicSansMS3.ttf');
+}
 
 body {
   font-family: "Comic Sans MS", "Arial", sans-serif;
 }
 
 #app {
+
+  div.cart {
+    padding: 2px;
+    width: $cart-width;
+    margin-top: 5px;
+    border: 1px gray solid;
+    text-align: center;
+    position: fixed;
+    background: #fff;
+    button {
+      margin: 20px 0px;
+    }
+  }
+
   div.product {
-    padding: 12%;
-    margin-top: -10%;
+    padding: 2% 15%;
+    // margin-top: -10%;
+    display: inline-block;
 
     div {
-      padding: 20px;
+      padding: $fixed-padding;
 
       @at-root {
         .product-image {
@@ -24,11 +46,18 @@ body {
 
         .product-info {
           float: left;
+
+          // disable padding inside div of product-info
+          .cart-box {
+            padding: 0px !important;
+          }
+
           button {
             margin-top: 10px;
             padding: 12px;
             background: aqua;
             border: 1px gray solid;
+            cursor: pointer;
           }
 
           .color-box {
@@ -36,6 +65,7 @@ body {
             height: 20px;
             margin-right: 15px;
             display: table-cell;
+            cursor: pointer;
           }
 
           // .outOfStock {
@@ -44,13 +74,37 @@ body {
 
           .disabledButton {
             border: 1px red solid;
+            cursor: auto;
           }
+        
+        }
 
-          .cart {
-            padding: 2px;
-            width: $cart-width;
-            margin-top: 5px;
-            border: 1px gray solid;
+        div.review-box,
+        form.review-form {
+          // border: 1px gray solid;
+          padding: $fixed-padding;
+          // margin: 6px 0px;
+        }
+
+        div#tabs {
+          border: 1px gray solid;
+          padding: 0px !important;
+          margin-top: 30px;
+          width: fit-content;
+          .tab {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13.5px;
+            padding: 16px;
+            border: inherit;
+            display: inline-block;
+            border-top: none;
+            border-left: none;
+            cursor: pointer;
+          }
+          .activeTab {
+            color: #16C0B0;
+            background-color: black;
+            text-decoration: underline;
           }
         }
       }
