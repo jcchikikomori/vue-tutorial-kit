@@ -2,12 +2,6 @@
   "git.autofetch": true,
   "breadcrumbs.enabled": false,
   "window.zoomLevel": 0,
-  "editor.fontSize": 12,
-  "terminal.integrated.fontSize": 12,
-  // "terminal.integrated.fontFamily": "Roboto Mono for Powerline",
-  "workbench.colorTheme": "Monokai High Contrast",
-  "files.maxMemoryForLargeFilesMB": 2048,
-  "terminal.integrated.fontFamily": "'Droid Sans Mono for Powerline', 'monospace'",
   "vetur.validation.template": false,
   "eslint.validate": [
       {
